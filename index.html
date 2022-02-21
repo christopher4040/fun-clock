@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+  <title>In-Line Clock</title>
+</head>
+
+<body>
+  <div id="timeline" style="width: 80%; height: 100px; margin: auto; position: relative; text-align: center;">
+    <h2 id="time" style="font-family: Arial, Helvetica, sans-serif;"></h2>
+    <div style="width: auto; height: 45px; display: flex; border: solid 2px indianred; border-radius: 25px; align-items: center;">
+      <div id="secBall" style="
+    z-index: 3;
+    position: absolute;
+    margin: 0px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: brown;">
+    </div>
+
+    <div id="minBall" style="
+    z-index: 2;
+    position: absolute;
+    margin: 0px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: cornflowerblue;">
+    </div>
+
+    <div id="hrBall" style="
+    z-index: 1;
+    position: absolute;
+    margin: 0px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: yellowgreen">
+    </div>
+    </div>
+    
+</div> 
+  
+</body>
+<script>
+
+//Elements by ID
+var timeline = document.getElementById('timeline');
+var secBall = document.getElementById('secBall');
+var minBall = document.getElementById('minBall');
+var hrBall = document.getElementById('hrBall');
+var time = document.getElementById('time');
+
+//Initializing default position
+var secPositionX = 0;
+var minPositionX = 0;
+var hrPositionX = 0;
+
+var secXmax = timeline.offsetWidth - parseInt(secBall.style.width);
+var minXmax = timeline.offsetWidth - parseInt(minBall.style.width);
+var hrXmax = timeline.offsetWidth - parseInt(hrBall.style.width);
+
+//This function change the position of the balls
+function moveBalls() {
+
+  var time = new Date();
+  console.log(`Time - ${time.getHours()} : ${time.getMinutes()} : ${time.getSeconds()}`);
+  document.getElementById('time').innerHTML = time;
+
+  secPositionX = (secXmax/59)*time.getSeconds();
+  minPositionX = (minXmax/59)*time.getMinutes();
+  hrPositionX = (hrXmax/23)*time.getHours();
+
+  secBall.style.left = secPositionX+'px';
+  minBall.style.left = minPositionX+'px';
+  hrBall.style.left = hrPositionX+'px';
+    
+}
+
+// This call the moveBall function every 1000ms
+setInterval(moveBalls, 1000);
+
+</script>
+
+</html>
