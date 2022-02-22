@@ -4,7 +4,7 @@
 This is a website with a local time clock builded with figures.
 
 ## Usage 
-Visit [Fun-Clock](https://christopher4040.github.io/fun-clock/) to go to the website. 
+Visit [fun-clock](https://christopher4040.github.io/fun-clock/) to view the clock in action. 
 
 ## Roadmap
 - Add more clock designs using figures
